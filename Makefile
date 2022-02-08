@@ -12,7 +12,7 @@
 
 NAME = push_swap
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 RM = 		/bin/rm -f
 LIBFT_PATH = libft
 LIBFT =		$(LIBFT_PATH)/libft.a
@@ -26,7 +26,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME) $(INCLUDE)
 
 $(NAME): 	$(OBJS) $(LIBFT)
-		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -g $(LIBFT)
+		@$(CC) $(FLAGS) -o $(NAME) $(OBJS) -g $(LIBFT)
 
 $(LIBFT):
 		@make -C $(LIBFT_PATH)
