@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+         #
+#    By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/12 07:09:18 by eryoo             #+#    #+#              #
-#    Updated: 2022/01/12 19:28:39 by eryoo            ###   ########.fr        #
+#    Updated: 2022/03/02 18:44:31 by eryoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ LIBFT =		$(LIBFT_PATH)/libft.a
 INCLUDE = include/push_swap.h
 
 SRCS = srcs/push_swap.c \
+		srcs/conversion.c \
+		srcs/push_swap_utils.c \
 		
 OBJS = $(SRCS:.c=.o)
 
@@ -29,7 +31,7 @@ $(NAME): 	$(OBJS) $(LIBFT)
 		@$(CC) $(FLAGS) -o $(NAME) $(OBJS) -g $(LIBFT)
 
 $(LIBFT):
-		@make -C $(LIBFT_PATH)
+		@make bonus -C $(LIBFT_PATH)
 
 clean:
 			@$(RM) $(OBJS)
