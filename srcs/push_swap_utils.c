@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 19:11:55 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/02 22:02:47 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/03/13 19:44:41 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_stack    *ft_lstnew_doubly(int content)
 {
     t_stack    *ptr;
 
+    
     ptr = (t_stack *)malloc(sizeof(t_stack));
     if (!ptr)
         return (NULL);
@@ -31,18 +32,23 @@ t_stack    *ft_lstnew_doubly(int content)
         ptr->next = NULL;
         ptr->prev = NULL;
     }
+    //printf("%d!!!\n", content);
     return (ptr);
 }
  
 t_stack    *ft_lstlast_doubly(t_stack *lst)
 {
     if (!lst)
+    {
         return (NULL);
+    }
+        
     while (lst->next != NULL)
         lst = lst->next;
     if (lst->next == NULL)
         return (lst);
     return (NULL);
+    
 }
 
 void    ft_lstadd_front_doubly(t_stack **lst, t_stack *new)
@@ -58,6 +64,7 @@ void    ft_lstadd_front_doubly(t_stack **lst, t_stack *new)
         (*lst)->prev = new;
         (*lst) = new;
     }
+    
 }
 
 void    ft_lstadd_back_doubly(t_stack **lst, t_stack *new)
@@ -67,7 +74,10 @@ void    ft_lstadd_back_doubly(t_stack **lst, t_stack *new)
     if (!new)
         return ;
     if (*lst == NULL)
+    {
         *lst = new;
+        return;
+    }
     ptr = ft_lstlast_doubly(*lst);
     ptr->next = new;
     new->prev = ptr;
