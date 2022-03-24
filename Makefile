@@ -6,7 +6,7 @@
 #    By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/12 07:09:18 by eryoo             #+#    #+#              #
-#    Updated: 2022/03/02 18:44:31 by eryoo            ###   ########.fr        #
+#    Updated: 2022/03/24 04:42:09 by eryoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,12 @@ LIBFT =		$(LIBFT_PATH)/libft.a
 INCLUDE = include/push_swap.h
 
 SRCS = srcs/push_swap.c \
-		srcs/conversion.c \
-		srcs/push_swap_utils.c \
+		srcs/utils/conversion.c \
+		srcs/utils/doubly_utils.c \
+		srcs/utils/exit_handle.c \
+		srcs/movements/ss_sa_sb.c \
+		srcs/movements/rr_ra_rb.c \
+		srcs/movements/rrr_rra_rrb.c \
 		
 OBJS = $(SRCS:.c=.o)
 

@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_push_mov.c                                    :+:      :+:    :+:   */
+/*   handling_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 22:30:39 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/13 20:11:37 by eryoo            ###   ########.fr       */
+/*   Created: 2022/03/24 04:23:45 by eryoo             #+#    #+#             */
+/*   Updated: 2022/03/24 04:38:30 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
-void swap_a()
+void	error_exit(void)
 {
-    
+	write(1, "Error\n", 6);
+	exit(1);
+}
+
+void	free_all(t_swap *swap)
+{
+	free(swap->number_int);
+
+	
 }
