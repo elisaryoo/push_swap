@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 14:56:26 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/24 04:33:54 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/03/29 23:04:11 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	convert_inputs(t_swap *swap)
 	j = 0;
 	swap->flag = 0;
 	swap->counter = 0;
-	swap->number_int = malloc(swap->numbers_a * (sizeof(int *)));
+	swap->number_int = ft_calloc(swap->numbers_a, sizeof(int *));
 	while (swap->numbers_a > i)
 	{
 		if (check_range(swap->inputs[i], swap) == 1)
@@ -101,12 +101,11 @@ void	transfer_list(t_swap *swap)
 {
 	int	i;
 
-	swap->stack_a = NULL;
 	i = 0;
 	while (swap->number_int[i])
 	{
 		ft_lstadd_back_doubly(&(swap->stack_a), \
-		ft_lstnew_doubly(swap->number_int[i]));
+		ft_lstnew_doubly(swap->number_int[i], swap));
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/12 07:09:18 by eryoo             #+#    #+#              #
-#    Updated: 2022/03/24 04:42:09 by eryoo            ###   ########.fr        #
+#    Updated: 2022/03/29 16:18:39 by eryoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ INCLUDE = include/push_swap.h
 SRCS = srcs/push_swap.c \
 		srcs/utils/conversion.c \
 		srcs/utils/doubly_utils.c \
-		srcs/utils/exit_handle.c \
+		srcs/utils/init_exit_handle.c \
 		srcs/movements/ss_sa_sb.c \
 		srcs/movements/rr_ra_rb.c \
 		srcs/movements/rrr_rra_rrb.c \
+		srcs/movements/pa_pb.c \
+		srcs/order/order.c
 		
 OBJS = $(SRCS:.c=.o)
 

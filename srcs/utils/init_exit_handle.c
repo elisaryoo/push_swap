@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handling_utils.c                                   :+:      :+:    :+:   */
+/*   init_exit_handle.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 04:23:45 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/24 04:38:30 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/03/24 05:41:17 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+void	init_stacks(t_swap *swap)
+{
+	swap->stack_a = NULL;
+	swap->stack_b = NULL;
+}
 
 void	error_exit(void)
 {
@@ -18,9 +24,16 @@ void	error_exit(void)
 	exit(1);
 }
 
-void	free_all(t_swap *swap)
+void	free_stack(t_stack **stack)
 {
-	free(swap->number_int);
+	t_stack	*temp;
 
-	
+	if ((*stack) == NULL)
+		return ;
+	while ((*stack) != NULL)
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		(*stack) = temp;
+	}
 }
