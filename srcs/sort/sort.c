@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 02:10:15 by eryoo             #+#    #+#             */
-/*   Updated: 2022/04/03 22:55:30 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/04/03 23:47:18 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sort_list(int **array, t_swap *swap)
 	int	j;
 	int	tmp;
 	int	length;
-	
+
 	length = swap->numbers_a;
 	i = 0;
 	while (i < length)

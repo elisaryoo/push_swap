@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 23:43:00 by eryoo             #+#    #+#             */
-/*   Updated: 2022/04/03 22:55:12 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/04/03 23:46:45 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	radix_sort(t_stack **stack_a, t_swap *swap)
 {
-	int i;
-	int j;
-	int bits;
-	int size;
-	t_stack *list;
-	
+	int		i;
+	int		j;
+	int		bits;
+	int		size;
+	t_stack	*list;
+
 	i = -1;
 	size = swap->numbers_a;
 	list = (*stack_a);
@@ -40,11 +40,11 @@ void	radix_sort(t_stack **stack_a, t_swap *swap)
 	}
 }
 
-int into_bits(t_stack **stack)
+int	into_bits(t_stack **stack)
 {
-	int max;
+	int		max;
 	int		max_bit;
-	t_stack *head;
+	t_stack	*head;
 
 	head = (*stack);
 	max = head->index;
@@ -57,5 +57,25 @@ int into_bits(t_stack **stack)
 	}
 	while ((max >> max_bit) != 0)
 		max_bit++;
-	return(max_bit);
+	return (max_bit);
+}
+
+int	min_value(t_stack **stack)
+{
+	int		min;
+	t_stack	*tmp;
+
+	tmp = (*stack);
+	min = 0;
+	if (tmp)
+	{
+		min = tmp->data;
+		while (tmp != NULL)
+		{
+			if (tmp->data < min)
+				min = tmp->data;
+			tmp = tmp->next;
+		}
+	}
+	return (min);
 }

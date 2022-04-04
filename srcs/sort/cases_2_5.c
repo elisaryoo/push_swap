@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 23:43:27 by eryoo             #+#    #+#             */
-/*   Updated: 2022/04/03 19:12:37 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/04/03 23:44:45 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	case_three(t_stack **stack_a, t_swap *swap)
 		return ;
 	if ((*stack_a)->next->data < (*stack_a)->data)
 		smaller_cases(&(swap->stack_a), swap);
-	else if((*stack_a)->data < (*stack_a)->next->data)
+	else if ((*stack_a)->data < (*stack_a)->next->data)
 	{
 		if ((*stack_a)->data < (*stack_a)->next->next->data && \
 		(*stack_a)->next->data > (*stack_a)->next->next->data)
@@ -58,9 +58,9 @@ void	case_three(t_stack **stack_a, t_swap *swap)
 
 void	case_four(t_stack **stack_a, t_swap *swap)
 {
-	int min;
-	t_stack *list;
-	
+	int		min;
+	t_stack	*list;
+
 	list = (*stack_a);
 	min = min_value(&(swap->stack_a));
 	while (list != NULL)
@@ -68,7 +68,7 @@ void	case_four(t_stack **stack_a, t_swap *swap)
 		if (list->data == min)
 		{
 			push_b(&(swap->stack_a), &(swap->stack_b), swap);
-			break;
+			break ;
 		}
 		list = list->next;
 		rotate_a(swap);
@@ -79,17 +79,17 @@ void	case_four(t_stack **stack_a, t_swap *swap)
 
 void	case_five(t_stack **stack_a, t_swap *swap)
 {
-	int min;
-	t_stack *list;
+	int		min;
+	t_stack	*list;
 
 	list = (*stack_a);
 	min = min_value(&(swap->stack_a));
-	while (list != 	NULL)
+	while (list != NULL)
 	{
 		if (list->data == min)
 		{
 			push_b(&(swap->stack_a), &(swap->stack_b), swap);
-			break;
+			break ;
 		}
 		list = list->next;
 		rotate_a(swap);

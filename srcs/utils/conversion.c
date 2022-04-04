@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 14:56:26 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/30 20:59:09 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/04/04 00:06:41 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	check_inputs(t_swap *swap)
 
 int	check_duplicate(t_stack **stack, t_swap *swap)
 {
-	t_stack *tmp;
-	t_stack *dup;
-	int flag;
+	int		flag;
+	t_stack	*tmp;
 
 	flag = 0;
 	tmp = (*stack);
@@ -59,24 +58,21 @@ int	check_duplicate(t_stack **stack, t_swap *swap)
 void	conversion(t_swap *swap)
 {
 	int	i;
-	int	j;
-	int	temp;
 
 	i = 0;
 	while (swap->numbers_a > i)
 	{
 		if (check_range(swap->inputs[i], swap) != 1)
 		{
-			temp = swap->current_nbr;
 			ft_lstadd_back_doubly(&(swap->subst), \
-			ft_lstnew_doubly(swap->current_nbr, swap));
+			ft_lstnew_doubly(swap->current_nbr));
 		}
-		else 
+		else
 			error_exit();
 		if (check_duplicate(&(swap->subst), swap) > 0)
 			error_exit();
 		ft_lstadd_back_doubly(&(swap->stack_a), \
-			ft_lstnew_doubly(swap->current_nbr, swap));
+			ft_lstnew_doubly(swap->current_nbr));
 		i++;
 	}
 }

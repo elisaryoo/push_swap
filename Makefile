@@ -6,13 +6,13 @@
 #    By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/12 07:09:18 by eryoo             #+#    #+#              #
-#    Updated: 2022/04/03 19:16:15 by eryoo            ###   ########.fr        #
+#    Updated: 2022/04/03 23:47:36 by eryoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3
 RM = 		/bin/rm -f
 LIBFT_PATH = libft
 LIBFT =		$(LIBFT_PATH)/libft.a
@@ -29,7 +29,6 @@ SRCS = srcs/push_swap.c \
 		srcs/movements/pa_pb.c \
 		srcs/sort/sort.c \
 		srcs/sort/cases_2_5.c \
-		srcs/sort/sort_utils.c \
 		srcs/sort/radix_sort.c
 		
 OBJS = $(SRCS:.c=.o)
@@ -37,7 +36,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME) $(INCLUDE)
 
 $(NAME): 	$(OBJS) $(LIBFT)
-		@$(CC) $(FLAGS) -o $(NAME) $(OBJS) -g $(LIBFT)
+		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -g $(LIBFT)
 
 $(LIBFT):
 		@make bonus -C $(LIBFT_PATH)
