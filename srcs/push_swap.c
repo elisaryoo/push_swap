@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 07:09:21 by eryoo             #+#    #+#             */
-/*   Updated: 2022/04/03 22:56:03 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/04/03 23:31:37 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,16 @@ int	main(int argc, char **argv)
 	swap.inputs = argv + 1;
 	swap.numbers_b = 0;
 	if (swap.numbers_a <= 1)
-		error_exit();
+		return (1);
 	else
 	{
 		init_stacks(&swap);
 		check_inputs(&swap);
 		conversion(&swap);
 		sort(&swap);
-		print_node(&swap);
-		print_node_b(&swap);
-		printf("the number of list is %d\n", swap.numbers_a);
-		printf("the number of list is %d\n", swap.numbers_b);
 		free_stack(&(swap.subst));
 		free_stack(&(swap.stack_a));
+		free_stack(&(swap.stack_b));
 	}
+	return (0);
 }
