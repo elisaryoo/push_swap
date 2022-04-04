@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_exit_handle.c                                 :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 04:23:45 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/30 20:54:40 by eryoo            ###   ########.fr       */
+/*   Created: 2022/04/03 19:08:19 by eryoo             #+#    #+#             */
+/*   Updated: 2022/04/03 19:08:43 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	init_stacks(t_swap *swap)
+int	min_value(t_stack **stack)
 {
-	swap->stack_a = NULL;
-	swap->stack_b = NULL;
-	swap->subst = NULL;
-}
-
-void	error_exit(void)
-{
-	write(1, "Error\n", 6);
-	exit(1);
-}
-
-void	free_stack(t_stack **stack)
-{
-	t_stack	*temp;
-
-	if ((*stack) == NULL)
-		return ;
-	while ((*stack) != NULL)
+	int min;
+	t_stack *tmp;
+	
+	tmp = (*stack);
+	min = 0;
+	if (tmp)
 	{
-		temp = (*stack)->next;
-		free(*stack);
-		(*stack) = temp;
+		min = tmp->data;
+		while (tmp != NULL)
+		{
+			if (tmp->data < min)
+				min = tmp->data;
+			tmp = tmp->next;
+		}
 	}
+	return (min);
 }

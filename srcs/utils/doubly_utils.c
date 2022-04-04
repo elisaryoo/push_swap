@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 19:11:55 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/29 23:09:42 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/04/03 19:16:51 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_stack	*ft_lstnew_doubly(int content, t_swap *swap)
 {
 	t_stack	*ptr;
 
-	ptr = ft_calloc( swap->numbers_a, sizeof(t_stack *));
+	ptr = (t_stack *)malloc(sizeof(t_stack));
 	if (!ptr)
 		return (NULL);
 	else

@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 14:56:26 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/29 23:04:11 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/03/30 20:59:09 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,44 @@ void	check_inputs(t_swap *swap)
 	}
 }
 
-void	convert_inputs(t_swap *swap)
+int	check_duplicate(t_stack **stack, t_swap *swap)
+{
+	t_stack *tmp;
+	t_stack *dup;
+	int flag;
+
+	flag = 0;
+	tmp = (*stack);
+	while (tmp->next != NULL)
+	{
+		if (tmp->data == swap->current_nbr)
+			flag++;
+		tmp = tmp->next;
+	}
+	return (flag);
+}
+
+void	conversion(t_swap *swap)
 {
 	int	i;
 	int	j;
+	int	temp;
 
 	i = 0;
-	j = 0;
-	swap->flag = 0;
-	swap->counter = 0;
-	swap->number_int = ft_calloc(swap->numbers_a, sizeof(int *));
 	while (swap->numbers_a > i)
 	{
-		if (check_range(swap->inputs[i], swap) == 1)
-			error_exit();
-		swap->counter++;
-		swap->number_int[i] = swap->current_nbr;
-		while (j < swap->counter)
+		if (check_range(swap->inputs[i], swap) != 1)
 		{
-			if (swap->number_int[j] == swap->current_nbr)
-				swap->flag++;
-			j++;
+			temp = swap->current_nbr;
+			ft_lstadd_back_doubly(&(swap->subst), \
+			ft_lstnew_doubly(swap->current_nbr, swap));
 		}
-		j = 0;
-		if (swap->flag > swap->numbers_a)
+		else 
 			error_exit();
+		if (check_duplicate(&(swap->subst), swap) > 0)
+			error_exit();
+		ft_lstadd_back_doubly(&(swap->stack_a), \
+			ft_lstnew_doubly(swap->current_nbr, swap));
 		i++;
 	}
 }
@@ -94,18 +107,5 @@ int	check_range(char *str, t_swap *swap)
 	{
 		swap->current_nbr = n * s;
 		return (0);
-	}
-}
-
-void	transfer_list(t_swap *swap)
-{
-	int	i;
-
-	i = 0;
-	while (swap->number_int[i])
-	{
-		ft_lstadd_back_doubly(&(swap->stack_a), \
-		ft_lstnew_doubly(swap->number_int[i], swap));
-		i++;
 	}
 }

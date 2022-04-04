@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 07:09:21 by eryoo             #+#    #+#             */
-/*   Updated: 2022/03/29 23:06:41 by eryoo            ###   ########.fr       */
+/*   Updated: 2022/04/03 22:56:03 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 void print_node(t_swap *swap)
 {
 	t_stack *temp = swap->stack_a;
+
+	printf("entrei no print a\n");
+	if (temp == NULL)
+		printf("this stack a is empty\n");
 	while(temp != NULL) {
-		printf("\n a is here: %d",temp->data);
+		printf("stack a is here: %d\n",temp->data);
 		temp = temp->next;
 	}
 }
@@ -27,8 +31,8 @@ void print_index(t_swap *swap)
 {
 	t_stack *temp = swap->stack_a;
 	while(temp != NULL) {
-		printf("\n a is here: %d",temp->data);
-		printf("\n a index is here: %d",temp->index);
+		printf("%d\n",temp->index);
+		//printf("\n a index is here: %d",temp->index);
 		temp = temp->next;
 	}
 }
@@ -36,12 +40,13 @@ void print_index(t_swap *swap)
 void print_node_b(t_swap *swap)
 {
 	t_stack *temp = swap->stack_b;
+	if (temp == NULL)
+		printf("this stack b is empty\n");
 	while(temp != NULL) {
-		printf("%d",temp->data);
-		printf("\n");
+		printf("stack b is here: %d",temp->data);
+		printf("\n\n");
 		temp = temp->next;
 	}
-	
 }
 
 int	main(int argc, char **argv)
@@ -57,13 +62,13 @@ int	main(int argc, char **argv)
 	{
 		init_stacks(&swap);
 		check_inputs(&swap);
-		convert_inputs(&swap);
-		transfer_list(&swap);
-		printf("%d and %d\n", swap.numbers_b, swap.numbers_a);
-		order(&swap);
-		print_index(&swap);
-		free(swap.number_int);
+		conversion(&swap);
+		sort(&swap);
+		print_node(&swap);
+		print_node_b(&swap);
+		printf("the number of list is %d\n", swap.numbers_a);
+		printf("the number of list is %d\n", swap.numbers_b);
+		free_stack(&(swap.subst));
 		free_stack(&(swap.stack_a));
-		free_stack(&(swap.stack_b));
 	}
 }
